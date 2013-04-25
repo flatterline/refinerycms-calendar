@@ -1,0 +1,15 @@
+<aside style="float: left; width: 200px; margin-right: 20px;">
+  <h2><%= @event.title %></h2>
+</aside>
+
+<section id='<%= dom_id(@event) -%>' style="float: left; width: 740px;">
+  <h4>Event details</h4>
+  <h5><%= @event.venue %></h5>
+
+  <p>From <%= @event.from.strftime("%b %d, %Y %I:%M %p") %> to <%= @event.to.strftime("%b %d, %Y %I:%M %p") %></p>
+
+  <div class="event_description">
+    <h4><%= @event.excerpt %></h4>
+    <%=raw @event.description %>
+  </div>
+</section>

@@ -3,37 +3,44 @@
               :object => @event,
               :include_object_name => true %>
 
-
   <div class='field'>
     <%= f.label :title -%>
     <%= f.text_field :title, :class => 'larger widest'  -%>
   </div>
 
+  <% if can?(:manage, Refinery::Calendar::Event) %>
+    <%= f.label :world_trade_center_id, 'World Trade Center' %>
+    <%= f.collection_select :world_trade_center_id, WorldTradeCenter.all, :id, :name, { :include_blank => 'None' }, :class => 'chzn-select', :'data-placeholder' => 'Search Venues' %>
+  <% else %>
+    <%= f.hidden_field :world_trade_center_id, value: current_refinery_user.world_trade_center_id %>
+  <% end %>
+<!--
   <div class="field">
     <p>
-      <%= f.check_box :featured %>
-      <%= f.label :featured, :class => 'stripped' %>
+      <%#= f.check_box :featured %>
+      <%#= f.label :featured, :class => 'stripped' %>
     </p>
-  </div>
+  </div> -->
 
   <div class='field'>
     <%= f.label :from -%>
-    <%= f.text_field :from, :class => 'datetime_range'  -%>
+    <%= f.text_field :from, :value => f.object.from.try(:strftime, "%b %d, %Y %I:%M %p"), :class => 'datetime_range'  -%>
   </div>
 
   <div class='field'>
     <%= f.label :to -%>
-    <%= f.text_field :to, :class => 'datetime_range'  -%>
+    <%= f.text_field :to, :value => f.object.to.try(:strftime, "%b %d, %Y %I:%M %p"), :class => 'datetime_range'  -%>
   </div>
 
-  <div class='field'>
-    <%= f.label :registration_link -%>
-    <%= f.text_field :registration_link, :class => 'larger'  -%>
-  </div>
+  <!-- <div class='field'>
+    <%#= f.label :registration_link -%>
+    <%#= f.text_field :registration_link, :class => 'larger'  -%>
+  </div> -->
 
   <div class='field'>
-    <%= f.label :venue_id, 'Venue' %>
-    <%= f.collection_select :venue_id, @venues, :id, :name, { :include_blank => 'None' }, :class => 'chzn-select', :'data-placeholder' => 'Search Venues', :style => 'width: 300px;' %>
+    <%= f.label :venue, 'Venue' %>
+    <%= f.text_field :venue %>
+    <%#= f.collection_select :venue_id, @venues, :id, :name, { :include_blank => 'None' }, :class => 'chzn-select', :'data-placeholder' => 'Search Venues', :style => 'width: 300px;' %>
   </div>
 
   <div class='field'>
