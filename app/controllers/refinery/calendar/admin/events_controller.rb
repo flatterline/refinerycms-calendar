@@ -9,6 +9,13 @@ module Refinery
                 :sortable => false,
                 :order => "'from' DESC"
 
+        def upcoming
+          @events = Refinery::Calendar::Event.upcoming
+          paginate_all_events
+
+          render_partial_response?
+        end
+
         private
         def find_venues
           @venues = Venue.order('name')

@@ -5,6 +5,11 @@ en:
         title: Venues
       calendar:
         title: Calendar
+    events:
+      admin:
+        events:
+          event:
+            delete: Delete
     calendar:
       admin:
         shared:
@@ -19,8 +24,7 @@ en:
           records:
             title: Venues
             sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Venues yet. Click "Add New Venue" to add your
-              first venue.
+            no_items_yet: There are no Venues yet. Click "Add New Venue" to add your first venue.
           venue:
             view_live_html: View this venue live <br/><em>(opens in a new window)</em>
             edit: Edit this venue
@@ -33,8 +37,7 @@ en:
           records:
             title: Events
             sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Events yet. Click "Add New Event" to add your
-              first event.
+            no_items_yet: There are no Events yet. Click "Add New Event" to add your first event.
           event:
             view_live_html: View this event live <br/><em>(opens in a new window)</em>
             edit: Edit this event

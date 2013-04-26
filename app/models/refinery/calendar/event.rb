@@ -45,6 +45,10 @@ module Refinery
       end
 
       class << self
+        def per_page
+          10
+        end
+
         def upcoming
           where('refinery_calendar_events.from >= ?', Time.now)
         end
