@@ -7,7 +7,7 @@ module Refinery
         crudify :'refinery/calendar/event',
                 :xhr_paging => true,
                 :sortable => false,
-                :order => "'from' DESC"
+                :order => "refinery_calendar_events.from DESC"
 
         def upcoming
           @events = Refinery::Calendar::Event.upcoming
