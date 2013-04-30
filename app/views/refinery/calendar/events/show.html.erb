@@ -9,7 +9,7 @@
   <p>From <%= @event.from.strftime('%B %d, %Y %I:%M%p') %> to <%= @event.to.strftime('%B %d, %Y %I:%M%p') %></p>
 
   <div class="event_description">
-    <h4><%= @event.excerpt %></h4>
+    <!-- <h4><%#= @event.excerpt %></h4> -->
     <%=raw @event.description %>
   </div>
 <% end %>

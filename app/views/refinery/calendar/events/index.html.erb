@@ -1,6 +1,8 @@
 <% content_for :body_content_left do %>
   <section id="events">
+    <%= page_entries_info @events %>
     <%= render @events %>
+    <%= will_paginate @events %>
   </section>
 <% end %>
 
