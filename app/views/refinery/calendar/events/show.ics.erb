@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//iCalendar export//EN
+BEGIN:VEVENT
+UID:event-<%= @event.id %>@<%= request.host %>
+SUMMARY:<%= @event.title %>
+DESCRIPTION:<%= strip_tags(@event.description) %>
+LOCATION:<%= @event.venue %>
+URL:<%= refinery.calendar_event_url @event %>
+STATUS:CONFIRMED
+CLASS:PUBLIC
+DTSTART:<%= @event.from.strftime('%Y%m%dT%H%M%SZ') %>
+DTEND:<%= @event.to.strftime('%Y%m%dT%H%M%SZ') %>
+DTSTAMP:<%= @event.from.strftime('%Y%m%dT%H%M%SZ') %>
+END:VEVENT
+END:VCALENDAR

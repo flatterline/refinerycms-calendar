@@ -1,5 +1,6 @@
 <aside style="float: left; width: 200px; margin-right: 20px;">
   <h2><%= @event.title %></h2>
+  <%= link_to refinery_icon_tag('calendar_add.png'), refinery.calendar_event_path(@event, format: :ics), id: dom_id(@event, :ical), title: t('.add_to_calendar') -%>
 </aside>
 
 <section id='<%= dom_id(@event) -%>' style="float: left; width: 740px;">

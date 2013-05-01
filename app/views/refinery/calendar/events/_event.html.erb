@@ -3,6 +3,10 @@
     <%= event.from.strftime('%b %d').html_safe %>
   </time>
 
-  <h1><%= link_to event.title, refinery.calendar_event_path(event) %></h1>
+  <h1>
+    <%= link_to event.title, refinery.calendar_event_path(event) %>
+    <%= link_to refinery_icon_tag('calendar_add.png'), refinery.calendar_event_path(event, format: :ics), id: dom_id(event, :ical), title: t('.add_to_calendar') -%>
+
+  </h1>
   <!-- <p><%#= event.excerpt %></p> -->
 <% end -%>
