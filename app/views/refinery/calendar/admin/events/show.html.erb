@@ -7,10 +7,9 @@
   <h4>Event details</h4>
   <h5><%= @event.venue %></h5>
 
-  <p>From <%= @event.from.strftime("%b %d, %Y %I:%M %p") %> to <%= @event.to.strftime("%b %d, %Y %I:%M %p") %></p>
+  <p>From <%= @event.starts_at.strftime("%b %d, %Y %I:%M %p") %> to <%= @event.ends_at.strftime("%b %d, %Y %I:%M %p") %></p>
 
   <div class="event_description">
-    <!-- <h4><%#= @event.excerpt %></h4> -->
     <%=raw @event.description %>
   </div>
 </section>

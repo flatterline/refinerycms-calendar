@@ -3,7 +3,13 @@ Refinery::Core::Engine.routes.draw do
   # Frontend routes
   namespace :calendar do
     get 'events/archive' => 'events#archive'
-    resources :events, :only => [:index, :show]
+    resources :events, only: [:index, :show] do
+      resources :attendees, only: [:new, :create], path: :register do
+        collection do
+          get :thanks
+        end
+      end
+    end
   end
 
   # Admin routes
@@ -17,16 +23,5 @@ Refinery::Core::Engine.routes.draw do
       end
     end
   end
-
-  # Admin routes
-  # namespace :calendar, :path => '' do
-  #   namespace :admin, :path => 'refinery/calendar' do
-  #     resources :venues, :except => :show do
-  #       collection do
-  #         post :update_positions
-  #       end
-  #     end
-  #   end
-  # end
 
 end

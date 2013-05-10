@@ -2,12 +2,17 @@ module Refinery
   module Calendar
     module Admin
       class EventsController < ::Refinery::AdminController
-        before_filter :find_venues, :except => [:index, :destroy]
 
         crudify :'refinery/calendar/event',
-                :xhr_paging => true,
-                :sortable => false,
-                :order => "refinery_calendar_events.from DESC"
+                xhr_paging: true,
+                sortable:   false,
+                order:      'refinery_calendar_events.starts_at DESC'
+
+        def create_with_organizer
+          params[:event][:organizer_id] = current_refinery_user.id
+          create_without_organizer
+        end
+        alias_method_chain :create, :organizer
 
         def upcoming
           @events = Refinery::Calendar::Event.upcoming
@@ -16,10 +21,6 @@ module Refinery
           render_partial_response?
         end
 
-        private
-        def find_venues
-          @venues = Venue.order('name')
-        end
       end
     end
   end

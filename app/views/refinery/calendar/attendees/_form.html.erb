@@ -1,0 +1,40 @@
+<%= render '/refinery/admin/error_messages', object: @attendee, include_object_name: true -%>
+
+<div class='field'>
+  <%= form.label :name -%>
+  <%= form.text_field :name, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :email -%>
+  <%= form.text_field :email, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :company_name -%>
+  <%= form.text_field :company_name, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :phone -%>
+  <%= form.text_field :phone, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :address -%>
+  <%= form.text_field :address, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :message -%>
+  <%= form.text_area :message, :class => 'larger widest'  -%>
+</div>
+
+<div class='field'>
+  <%= form.label :number_attending -%>
+  <%= form.text_field :number_attending  -%>
+</div>
+
+<div class='field'>
+  <%= form.submit t('.register') -%>
+</div>

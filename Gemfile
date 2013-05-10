@@ -13,6 +13,11 @@ end
 
 gem 'jquery-rails'
 
+group :test do
+  gem 'launchy'
+  gem 'will_paginate'
+end
+
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.0.0'
   gem 'factory_girl_rails'

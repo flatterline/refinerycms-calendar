@@ -2,16 +2,10 @@ class CreateCalendarEvents < ActiveRecord::Migration
 
   def up
     create_table :refinery_calendar_events do |t|
-      t.string :title
-      t.date :from
-      t.date :to
-      t.string :registration_link
-      t.string :excerpt
-      t.text :description
-      t.integer :position
-      t.boolean :featured
-      t.string :slug
-      t.integer :venue_id
+      t.belongs_to :organizer
+      t.string     :title, :venue, :slug
+      t.text       :description
+      t.datetime   :ends_at, :starts_at
 
       t.timestamps
     end
@@ -28,7 +22,6 @@ class CreateCalendarEvents < ActiveRecord::Migration
     end
 
     drop_table :refinery_calendar_events
-
   end
 
 end

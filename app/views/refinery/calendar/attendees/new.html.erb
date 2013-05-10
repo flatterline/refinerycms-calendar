@@ -1,0 +1,14 @@
+<% content_for :body_content_left do %>
+  <h4><%=t '.header' -%></h4>
+
+  <%= @event.title %>
+  <h5><%= @event.venue %></h5>
+  <p>From <%= @event.starts_at.strftime('%B %d, %Y %I:%M%p') %> to <%= @event.ends_at.strftime('%B %d, %Y %I:%M%p') %></p>
+
+  <%= form_for @attendee, url: refinery.calendar_event_attendees_path(@event) do |form| -%>
+    <%= render form -%>
+  <% end -%>
+<% end %>
+
+<% content_for :stylesheets, stylesheet_link_tag('events') %>
+<%= render '/refinery/content_page' %>

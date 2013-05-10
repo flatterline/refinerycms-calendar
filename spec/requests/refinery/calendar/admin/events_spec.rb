@@ -29,7 +29,9 @@ describe Refinery do
 
           context "valid data" do
             it "should succeed" do
-              fill_in "Title", :with => "This is a test of the first string field"
+              fill_in "Title", with: "This is a test of the first string field"
+              fill_in 'From',  with: (Time.now + 1.day).strftime("%b %d, %Y %I:%M %p")
+              fill_in 'To',    with: (Time.now + 1.day + 2.hours).strftime("%b %d, %Y %I:%M %p")
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")

@@ -29,7 +29,7 @@ Refinery::Core.configure do |config|
 
   # Should set this if concerned about DOS attacks. See
   # http://markevans.github.com/dragonfly/file.Configuration.html#Configuration
-  # config.dragonfly_secret = "3133e393cf9a9c61355f3511ea078802e3fbb313245f1154"
+  # config.dragonfly_secret = "f84811edb2cb288ab53729296fbe1831b94ca2a8a9ed334c"
 
   # Show/hide IE6 upgrade message in the backend
   # config.ie6_upgrade_message_enabled = true
@@ -41,10 +41,10 @@ Refinery::Core.configure do |config|
   # config.wymeditor_whitelist_tags = {}
 
   # Register extra javascript for backend
-  config.register_javascript "jquery.ui.timepicker.addon.js"
-  config.register_javascript "refinery/calendar.js"
+  config.register_javascript 'jquery.ui.timepicker.addon.js'
+  config.register_javascript 'refinery/calendar.js'
 
   # Register extra stylesheet for backend (optional options)
-  config.register_stylesheet "refinery/calendar", :media => 'screen'
-  config.register_stylesheet "jquery-ui", :media => 'screen'
+  config.register_stylesheet 'refinery/calendar', media: 'screen'
+  config.register_stylesheet 'jquery-ui', media: 'screen'
 end

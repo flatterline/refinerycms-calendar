@@ -1,10 +1,14 @@
 en:
   refinery:
     plugins:
-      venues:
-        title: Venues
       calendar:
         title: Calendar
+    event_mailer:
+      new_registration:
+        event_details: "Event details"
+        heading:       "An event registration was received."
+        p:             "View the event here:"
+        subject:       "New event registration"
     events:
       admin:
         events:
@@ -15,20 +19,6 @@ en:
         shared:
           links:
             manage_events: Manage Events
-            manage_venues: Manage Venues
-        venues:
-          actions:
-            create_new: Add New Venue
-            reorder: Reorder Venues
-            reorder_done: Done Reordering Venues
-          records:
-            title: Venues
-            sorry_no_results: Sorry! There are no results found.
-            no_items_yet: There are no Venues yet. Click "Add New Venue" to add your first venue.
-          venue:
-            view_live_html: View this venue live <br/><em>(opens in a new window)</em>
-            edit: Edit this venue
-            delete: Remove this venue forever
         events:
           actions:
             create_new: Add New Event
@@ -45,26 +35,25 @@ en:
             delete: Remove this event forever
           show:
             add_to_calendar: Add this event to your calendar.
-      venues:
-        show:
-          other: Other Venues
       events:
         event:
           add_to_calendar: Add this event to your calendar.
         show:
           add_to_calendar: Add this event to your calendar.
           other: Other Events
+          register: Register
+      attendees:
+        form:
+          register: Register
+        new:
+          header: Register to attend
+        thanks:
+          header: "Thanks for registering for this event!"
+
   activerecord:
     attributes:
-      refinery/calendar/venue:
-        name: Name
-        address: Address
-        url: Url
-        phone: Phone
       refinery/calendar/event:
         title: Title
-        from: From
-        to: To
-        registration_link: Registration Link
-        excerpt: Excerpt
+        starts_at: From
+        ends_at: To
         description: Description

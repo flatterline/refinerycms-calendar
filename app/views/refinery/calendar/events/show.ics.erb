@@ -9,8 +9,8 @@ LOCATION:<%= @event.venue %>
 URL:<%= refinery.calendar_event_url @event %>
 STATUS:CONFIRMED
 CLASS:PUBLIC
-DTSTART:<%= @event.from.strftime('%Y%m%dT%H%M%SZ') %>
-DTEND:<%= @event.to.strftime('%Y%m%dT%H%M%SZ') %>
-DTSTAMP:<%= @event.from.strftime('%Y%m%dT%H%M%SZ') %>
+DTSTART:<%= @event.starts_at.strftime('%Y%m%dT%H%M%SZ') %>
+DTEND:<%= @event.ends_at.strftime('%Y%m%dT%H%M%SZ') %>
+DTSTAMP:<%= @event.starts_at.strftime('%Y%m%dT%H%M%SZ') %>
 END:VEVENT
 END:VCALENDAR

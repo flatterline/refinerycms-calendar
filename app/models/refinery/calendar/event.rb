@@ -2,44 +2,29 @@ module Refinery
   module Calendar
     class Event < Refinery::Core::BaseModel
       extend FriendlyId
+      friendly_id :title, use: :slugged
 
-      friendly_id :title, :use => :slugged
+      belongs_to :organizer, class_name: 'Refinery::User'
+      has_many   :attendees
 
-      # belongs_to :venue
-      belongs_to :world_trade_center
+      validates :title, presence: true, uniqueness: true
+      validates :ends_at, :organizer_id, :starts_at, presence: true
+      validate  :starts_before_end
 
-      validates :title, :presence => true, :uniqueness => true
-      validates :from, :presence => true
-      validates :to, :presence => true
-      validate :to_after_from
+      attr_accessible :description, :ends_at, :organizer_id, :starts_at, :title, :venue
 
-      attr_accessible :title, :from, :to, :registration_link,
-                      :venue_id, :excerpt, :description,
-                      :featured, :position, :world_trade_center_id, :venue
-
-      # delegate :name, :address,
-      #           :to => :venue,
-      #           :prefix => true,
-      #           :allow_nil => true
-
-      def to=(date)
-        if date.is_a? String # Apr 24, 2013 12:00 am
-          write_attribute(:to, DateTime.parse(date, "%b %d, %Y %I:%M %p") )
-        else
-          write_attribute(:to, date)
-        end
+      def ends_at= date
+        date = DateTime.parse(date, "%b %d, %Y %I:%M %p") if date.is_a?(String) && date.present?
+        write_attribute :ends_at, date
       end
 
-      def from=(date)
-        if date.is_a? String
-          write_attribute(:from, DateTime.parse(date, "%b %d, %Y %I:%M %p") )
-        else
-          write_attribute(:from, date)
-        end
+      def starts_at= date
+        date = DateTime.parse(date, "%b %d, %Y %I:%M %p") if date.is_a?(String) && date.present?
+        write_attribute :starts_at, date
       end
 
-      def to_after_from
-        if to && from && to < from
+      def starts_before_end
+        if ends_at && starts_at && starts_at > ends_at
           self.errors.add(:base, "An event's end must come after it's start")
         end
       end
@@ -50,15 +35,11 @@ module Refinery
         end
 
         def upcoming
-          where('refinery_calendar_events.from >= ?', Time.now)
-        end
-
-        def featured
-          where(:featured => true)
+          where('refinery_calendar_events.starts_at >= ?', Time.now)
         end
 
         def archive
-          where('refinery_calendar_events.from < ?', Time.now)
+          where('refinery_calendar_events.starts_at < ?', Time.now)
         end
       end
     end

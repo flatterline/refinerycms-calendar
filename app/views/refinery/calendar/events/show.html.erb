@@ -3,13 +3,13 @@
 
   <%= @event.title %>
   <%= link_to refinery_icon_tag('calendar_add.png'), refinery.calendar_event_path(@event, format: :ics), id: dom_id(@event, :ical), title: t('.add_to_calendar') -%>
+  <%= link_to t('.register'), refinery.new_calendar_event_attendee_path(@event) -%>
 
   <h5><%= @event.venue %></h5>
 
-  <p>From <%= @event.from.strftime('%B %d, %Y %I:%M%p') %> to <%= @event.to.strftime('%B %d, %Y %I:%M%p') %></p>
+  <p>From <%= @event.starts_at.strftime('%B %d, %Y %I:%M%p') %> to <%= @event.ends_at.strftime('%B %d, %Y %I:%M%p') %></p>
 
   <div class="event_description">
-    <!-- <h4><%#= @event.excerpt %></h4> -->
     <%=raw @event.description %>
   </div>
 <% end %>
