@@ -1,0 +1,3 @@
+@attendees.each do |attendee|
+  csv << [attendee.name, attendee.email, attendee.company_name, attendee.address, attendee.phone, attendee.message, attendee.number_attending]
+end

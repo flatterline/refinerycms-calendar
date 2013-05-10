@@ -16,6 +16,7 @@ Refinery::Core::Engine.routes.draw do
   namespace :calendar, :path => '' do
     namespace :admin, :path => 'refinery/calendar' do
       resources :events do
+        resources :attendees, only: [:index]
         collection do
           post :update_positions
           get :upcoming

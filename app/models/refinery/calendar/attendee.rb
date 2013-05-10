@@ -1,6 +1,8 @@
 module Refinery
   module Calendar
     class Attendee < Refinery::Core::BaseModel
+      acts_as_indexed :fields => [:name, :email]
+
       belongs_to :event
       belongs_to :user, class_name: 'Refinery::User'
 

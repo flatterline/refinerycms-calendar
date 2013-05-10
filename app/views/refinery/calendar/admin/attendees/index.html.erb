@@ -1,0 +1,10 @@
+<section id='records'>
+  <h2>Calendar: Event Attendees</h2>
+  <%= render 'records' %>
+</section>
+
+<aside id='actions'>
+  <%= render 'actions' %>
+</aside>
+
+<%= render '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Calendar::Admin::AttendeesController.sortable? and @attendees.count > 1 %>
