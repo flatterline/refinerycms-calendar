@@ -9,18 +9,16 @@ module Refinery
                 sortable:   false
 
         def index
-          search_all_attendees if searching?
-
           respond_to do |format|
             format.html {
+              search_all_attendees if searching?
               paginate_all_attendees
               render_partial_response?
             }
-            format.csv #{
-              # @filename        = "#{@event.slug}.csv"
-              # @output_encoding = 'UTF-8'
-              # @streaming       = true
-            #}
+            format.csv {
+              find_all_attendees
+              send_data @attendees.to_csv_download, filename: "#{@event.slug}.csv"
+            }
           end
         end
 

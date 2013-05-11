@@ -11,7 +11,6 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'csv_builder'
 gem 'jquery-rails'
 
 group :test do
