@@ -1,0 +1,10 @@
+<ul>
+  <% if ::Refinery::Calendar::Admin::AttendeesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.calendar_admin_event_attendees_path(@event) %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.export'), refinery.calendar_admin_event_attendees_path(@event, format: :csv), class: 'manage_icon' -%>
+  </li>
+</ul>

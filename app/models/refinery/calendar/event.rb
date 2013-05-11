@@ -4,6 +4,8 @@ module Refinery
       extend FriendlyId
       friendly_id :title, use: :slugged
 
+      acts_as_indexed :fields => [:title, :description, :venue]
+
       belongs_to :organizer, class_name: 'Refinery::User'
       has_many   :attendees
 
