@@ -22,6 +22,20 @@ describe Refinery do
             visit refinery.calendar_admin_event_path(@event)
           end
 
+          it 'shows the number of attendees, not the number of registrations' do
+            a = FactoryGirl.create :attendee, number_attending: 3
+            visit refinery.calendar_admin_event_path(a.event)
+
+            page.should have_link("View Attendees (3)")
+          end
+
+          it 'shows 0 attendees, when there are none' do
+            event = FactoryGirl.create :event
+            visit refinery.calendar_admin_event_path(event)
+
+            page.should have_link("View Attendees (0)")
+          end
+
           it "shows all 4 attendees" do
             click_link 'View Attendees (4)'
 

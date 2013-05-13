@@ -15,6 +15,10 @@ module Refinery
 
       attr_accessible :description, :ends_at, :organizer_id, :starts_at, :title, :venue
 
+      def attendees_count
+        self.attendees.sum(&:number_attending)
+      end
+
       def ends_at= date
         date = DateTime.parse(date, "%b %d, %Y %I:%M %p") if date.is_a?(String) && date.present?
         write_attribute :ends_at, date
