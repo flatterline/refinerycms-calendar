@@ -5,11 +5,14 @@ module Refinery
 
       def new
         @attendee = @event.attendees.build
+        @attendee.user = current_refinery_user if refinery_user_signed_in?
+
         present(@page)
       end
 
       def create
         @attendee = @event.attendees.build(params[:attendee])
+        @attendee.user = current_refinery_user if refinery_user_signed_in?
 
         if @attendee.save
           ::Refinery::Calendar::EventMailer.new_registration(@event, request).deliver

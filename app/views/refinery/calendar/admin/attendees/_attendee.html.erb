@@ -1,8 +1,16 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(attendee) -%>">
-  <span class='name'>
-    <%= attendee.name %>
-  </span>
-  <span class='email'>
-    (<%= mail_to attendee.email, attendee.email %>)
-  </span>
+  <div class="row" style="overflow:hidden">
+    <div style="float:left">
+      <%= attendee.name %>
+      (<%= mail_to attendee.email, attendee.email %>)
+    </div>
+
+    <div style="float:right">
+      <%= attendee.number_attending -%> attending
+    </div>
+  </div>
+
+  <%= attendee_info attendee -%>
+
+  <%= simple_format attendee.message unless attendee.message.blank? -%>
 </li>

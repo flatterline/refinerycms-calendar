@@ -2,12 +2,12 @@
 
 <div class='field'>
   <%= form.label :name -%>
-  <%= form.text_field :name, :class => 'larger widest'  -%>
+  <%= form.text_field :name, value: @attendee.name, :class => 'larger widest'  -%>
 </div>
 
 <div class='field'>
   <%= form.label :email -%>
-  <%= form.text_field :email, :class => 'larger widest'  -%>
+  <%= form.text_field :email, value: @attendee.email, :class => 'larger widest'  -%>
 </div>
 
 <div class='field'>
@@ -17,7 +17,7 @@
 
 <div class='field'>
   <%= form.label :phone -%>
-  <%= form.text_field :phone, :class => 'larger widest'  -%>
+  <%= form.text_field :phone, value: @attendee.phone, :class => 'larger widest'  -%>
 </div>
 
 <div class='field'>

@@ -13,6 +13,13 @@ module Refinery
 
       attr_accessible :address, :company_name, :email, :event_id, :message, :name, :number_attending, :phone, :user_id
 
+      # Fall back on the user's info, if possible.
+      %w(email name phone).each do |a|
+        define_method a do
+          read_attribute(a) || self.user.try(a)
+        end
+      end
+
       class << self
         def to_csv_download
           CSV.generate do |csv|
