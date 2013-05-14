@@ -1,5 +1,6 @@
 <% content_for :body_content_left do %>
   <h4><%=t '.header' -%></h4>
+  <%= render partial: 'refinery/calendar/shared/add_to_calendar' -%>
 
   <%= @event.title %>
   <h5><%= @event.venue %></h5>

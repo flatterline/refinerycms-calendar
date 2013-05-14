@@ -19,6 +19,15 @@ module Refinery
         self.attendees.sum(&:number_attending)
       end
 
+      def duration
+        seconds = (self.ends_at - self.starts_at).abs
+
+        hours, minutes_as_seconds = seconds.divmod(3600)
+        minutes = minutes_as_seconds / 60
+
+        [hours, minutes]
+      end
+
       def ends_at= date
         date = DateTime.parse(date, "%b %d, %Y %I:%M %p") if date.is_a?(String) && date.present?
         write_attribute :ends_at, date

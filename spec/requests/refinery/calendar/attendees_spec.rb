@@ -36,6 +36,11 @@ describe Refinery do
               click_button 'Register'
 
               page.should have_content('Thanks for registering for this event!')
+              page.should have_link('Add to my calendar')
+              page.should have_link('Outlook Calendar')
+              page.should have_link('Google Calendar')
+              page.should have_link('Yahoo! Calendar')
+              page.should have_link('iCal Calendar')
 
               attendee = Refinery::Calendar::Attendee.first
               attendee.name.should == 'John Smith'
