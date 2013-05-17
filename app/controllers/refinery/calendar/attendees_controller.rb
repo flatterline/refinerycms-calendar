@@ -2,16 +2,17 @@ module Refinery
   module Calendar
     class AttendeesController < ::ApplicationController
       before_filter :find_event
+      before_filter :get_ip_address, only: [:create]
 
       def new
-        @attendee = @event.attendees.build
+        @attendee      = @event.attendees.build
         @attendee.user = current_refinery_user if refinery_user_signed_in?
 
         present(@page)
       end
 
       def create
-        @attendee = @event.attendees.build(params[:attendee])
+        @attendee      = @event.attendees.build(params[:attendee])
         @attendee.user = current_refinery_user if refinery_user_signed_in?
 
         if @attendee.save
@@ -36,6 +37,9 @@ module Refinery
         @page = ::Refinery::Page.where(link_url: '/calendar/events').first
       end
 
+      def get_ip_address
+        params[:attendee].merge!(ip_address: request.remote_ip)
+      end
     end
   end
 end

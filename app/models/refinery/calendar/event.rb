@@ -13,7 +13,7 @@ module Refinery
       validates :ends_at, :organizer_id, :starts_at, presence: true
       validate  :starts_before_end
 
-      attr_accessible :description, :ends_at, :organizer_id, :starts_at, :title, :venue
+      attr_accessible :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue
 
       def attendees_count
         self.attendees.sum(&:number_attending)

@@ -13,11 +13,13 @@ describe Refinery do
         describe "attendees list" do
 
           before do
-            @attendee = FactoryGirl.create(:attendee)
-            @event = @attendee.event
-            3.times { FactoryGirl.create(:attendee, event: @attendee.event) }
+            ip        = ->{ "127.0.0.#{rand(1000)}" }
+            @attendee = FactoryGirl.create(:attendee, ip_address: ip.call)
+            @event    = @attendee.event
 
-            @other_attendee = FactoryGirl.create(:attendee)
+            3.times { FactoryGirl.create(:attendee, event: @attendee.event, ip_address: ip.call) }
+
+            @other_attendee = FactoryGirl.create(:attendee, ip_address: ip.call)
 
             visit refinery.calendar_admin_event_path(@event)
           end
@@ -63,6 +65,8 @@ describe Refinery do
             attendees.each do |attendee|
               page.should have_content(attendee.name)
               page.should have_content(attendee.email)
+              page.should have_content(attendee.ip_address)
+              page.should have_content(attendee.created_at.strftime("%m/%d/%Y %I:%M %p"))
             end
 
             page.should_not have_content(@other_attendee.name)

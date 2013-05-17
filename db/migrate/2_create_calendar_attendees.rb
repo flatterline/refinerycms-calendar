@@ -6,6 +6,7 @@ class CreateCalendarAttendees < ActiveRecord::Migration
       t.string     :name, :email, :company_name, :phone, :address
       t.text       :message
       t.integer    :number_attending, default: 1
+      t.string     :ip_address
 
       t.timestamps
     end
