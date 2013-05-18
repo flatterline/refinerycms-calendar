@@ -15,6 +15,13 @@ module Refinery
 
       attr_accessible :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue
 
+      scope :private, where(private: true)
+      scope :public,  where(private: false)
+
+      def public?
+        !private
+      end
+
       def attendees_count
         self.attendees.sum(&:number_attending)
       end

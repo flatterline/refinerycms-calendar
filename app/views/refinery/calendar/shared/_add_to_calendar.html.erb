@@ -1,5 +1,8 @@
 <div id="<%= dom_id(@event, 'add-to-calendar') -%>">
-  <%= link_to "#{refinery_icon_tag('calendar_add.png')} Add to my calendar".html_safe, refinery.calendar_event_path(@event, format: :ics), class: 'add-to-calendar-link' -%>
+  <%= link_to "#{refinery_icon_tag('calendar_add.png')} Add to my calendar".html_safe,
+              refinery.calendar_event_path(@event, format: :ics),
+              id: dom_id(@event, 'add-to-cal'),
+              class: 'add-to-calendar-link' -%>
 
   <ul class="calendar-options">
     <li><%= link_to 'Outlook Calendar', refinery.calendar_event_path(@event, format: :ics) -%></li>
@@ -12,7 +15,7 @@
         location: @event.venue,
         sf:       true,
         output:   'xml'
-      }.to_param}", target: '_blank' -%>
+      }.to_param}", target: '_blank', id: dom_id(@event, 'google-cal') -%>
     </li>
     <li>
       <%= link_to 'Yahoo! Calendar', "http://calendar.yahoo.com/?#{{
@@ -24,8 +27,8 @@
         dur:      "%02d%02d" % @event.duration,
         desc:     "For details see: #{refinery.calendar_event_url(@event)}",
         in_loc:   @event.venue
-      }.to_param}", target: '_blank' -%>
+      }.to_param}", target: '_blank', id: dom_id(@event, :yahoo) -%>
     </li>
-    <li><%= link_to 'iCal Calendar', refinery.calendar_event_path(@event, format: :ics) -%></li>
+    <li><%= link_to 'iCal Calendar', refinery.calendar_event_path(@event, format: :ics), id: dom_id(@event, :ical) -%></li>
   </ul>
 </div>
