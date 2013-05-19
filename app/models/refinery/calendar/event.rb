@@ -13,14 +13,10 @@ module Refinery
       validates :ends_at, :organizer_id, :starts_at, presence: true
       validate  :starts_before_end
 
-      attr_accessible :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue, :private
+      attr_accessible :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue, :is_private
 
-      scope :private, where(private: true)
-      scope :public,  where(private: false)
-
-      def public?
-        !private
-      end
+      scope :is_private, where(is_private: true)
+      scope :is_public,  where(is_private: false)
 
       def attendees_count
         self.attendees.sum(&:number_attending)

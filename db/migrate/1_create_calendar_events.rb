@@ -6,6 +6,7 @@ class CreateCalendarEvents < ActiveRecord::Migration
       t.string     :title, :venue, :slug
       t.text       :description
       t.datetime   :ends_at, :starts_at
+      t.boolean    :is_private, default: false
 
       t.timestamps
     end

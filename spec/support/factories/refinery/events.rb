@@ -4,6 +4,10 @@ FactoryGirl.define do
     sequence(:title) { |n| "refinery#{n}" }
     starts_at        { Time.now + 1.week }
     ends_at          { Time.now + 1.week + 2.hours }
+
+    factory :private_event do
+      is_private true
+    end
   end
 end
 

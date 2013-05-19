@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 module Refinery
+
   module Calendar
+
     describe Event do
+
       before do
         @event = FactoryGirl.build(:event)
       end
@@ -54,6 +57,21 @@ module Refinery
         end
 
       end
+
+      describe 'defaults' do
+
+        describe 'is_private' do
+
+          it 'defaults to false' do
+            @event.is_private.should be_false
+          end
+
+        end
+
+      end
+
     end
+
   end
+
 end
