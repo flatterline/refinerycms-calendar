@@ -9,6 +9,8 @@ Refinery::Core::Engine.routes.draw do
           get :thanks
         end
       end
+
+      resources :messages, only: [:new, :create]
     end
   end
 

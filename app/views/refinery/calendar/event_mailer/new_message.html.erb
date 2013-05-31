@@ -1,0 +1,11 @@
+<h2><%=t 'heading', scope: 'refinery.event_mailer.new_message' %></h2>
+
+<p><%=t 'p1', scope: 'refinery.event_mailer.new_message', name: @name %></p>
+
+<div style="font-size: 0.9em; margin-left: 20px">
+  <%= simple_format @body -%>
+</div>
+
+<p><%= link_to t('event_details', scope: 'refinery.event_mailer.new_message'), @url %></p>
+
+<p><%=t 'p2', scope: 'refinery.event_mailer.new_message' %></p>

@@ -50,6 +50,30 @@ describe Refinery do
 
       end
 
+      describe 'contact the organizer' do
+
+        it 'sends an email to the organizer' do
+          event = @public_events.last
+          click_link event.title
+
+          click_link 'Contact the Organizer'
+
+          name  = 'Mary Smith'
+          email = 'mary@smith.com'
+          body  = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora, corporis iusto quasi vitae incidunt earum a. Culpa, esse, necessitatibus aperiam ab consequatur laborum sed distinctio doloribus error maiores natus saepe.'
+
+          mail = mock('event_mailer')
+          mail.should_receive(:deliver)
+          ::Refinery::Calendar::EventMailer.should_receive(:new_message).and_return mail
+
+          fill_in 'Your Name',     with: name
+          fill_in 'Email Address', with: email
+          fill_in 'Your Message',  with: body
+          click_button 'Send Message'
+        end
+
+      end
+
     end
 
   end

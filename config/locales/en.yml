@@ -1,19 +1,33 @@
 en:
   refinery:
+    controllers:
+      messages:
+        create:
+          success: "Thanks! Your message has been sent to the organizer."
+
     plugins:
       calendar:
         title: Calendar
+
     event_mailer:
+      new_message:
+        event_details: "Event details"
+        heading:       "A message was received."
+        p1:            "An event you are organizing has received a message from %{name}:"
+        p2:            "Please reply to this message to respond to the sender."
+        subject:       "Message received about event"
       new_registration:
         event_details: "Event details"
         heading:       "An event registration was received."
         p:             "View the event here:"
         subject:       "New event registration"
+
     events:
       admin:
         events:
           event:
             delete: Delete
+
     calendar:
       admin:
         attendees:
@@ -41,13 +55,6 @@ en:
           show:
             add_to_calendar: Add this event to your calendar.
             view_attendees: View Attendees (%{count})
-      events:
-        event:
-          add_to_calendar: Add this event to your calendar.
-        show:
-          add_to_calendar: Add this event to your calendar.
-          other: Other Events
-          register: Register
       attendees:
         form:
           register: Register
@@ -55,6 +62,22 @@ en:
           header: Register to attend
         thanks:
           header: "Thanks for registering for this event!"
+      events:
+        event:
+          add_to_calendar: Add this event to your calendar.
+        show:
+          add_to_calendar: Add this event to your calendar.
+          contact_organizer: Contact the Organizer
+          other: Other Events
+          register: Register
+      messages:
+        new:
+          header: Contact the Organizer
+          label:
+            body: Your Message
+            email: Email Address
+            name: Your Name
+          submit: Send Message
 
   activerecord:
     attributes:

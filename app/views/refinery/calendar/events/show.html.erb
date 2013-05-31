@@ -1,9 +1,10 @@
-<% content_for :body_content_left do %>
+<% content_for :body do %>
   <h4>Event details</h4>
 
   <%= @event.title %>
   <%= render partial: 'refinery/calendar/shared/add_to_calendar' -%>
   <%= link_to t('.register'), refinery.new_calendar_event_attendee_path(@event) -%>
+  <%= link_to t('.contact_organizer'), refinery.new_calendar_event_message_path(@event), class: 'btn' -%>
 
   <h5><%= @event.venue %></h5>
 

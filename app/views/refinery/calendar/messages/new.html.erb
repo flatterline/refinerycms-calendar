@@ -1,0 +1,27 @@
+<% content_for :body do %>
+  <h4><%=t '.header' -%></h4>
+
+  <%= form_tag refinery.calendar_event_messages_path(@event) do -%>
+    <div class='field'>
+      <%= label_tag :name, t('.label.name') -%>
+      <%= text_field_tag :name, params[:name], class: 'larger widest', required: true -%>
+    </div>
+
+    <div class='field'>
+      <%= label_tag :email, t('.label.email') -%>
+      <%= text_field_tag :email, params[:email], class: 'larger widest', required: true -%>
+    </div>
+
+    <div class='field'>
+      <%= label_tag :body, t('.label.body') -%>
+      <%= text_area_tag :body, params[:body], class: 'larger widest', required: true -%>
+    </div>
+
+    <div class='field'>
+      <%= submit_tag t('.submit') -%>
+    </div>
+  <% end -%>
+<% end %>
+
+<% content_for :stylesheets, stylesheet_link_tag('events') %>
+<%= render '/refinery/content_page' %>
