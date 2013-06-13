@@ -18,6 +18,10 @@ describe Refinery do
           3.times { events << FactoryGirl.create(:private_event) }
         end
 
+        @past_events = [].tap do |events|
+          3.times { events << FactoryGirl.create(:past_event) }
+        end
+
         visit refinery.calendar_events_path
       end
 
@@ -31,6 +35,16 @@ describe Refinery do
           @private_events.each do |event|
             page.should_not have_link(event.title)
           end
+        end
+
+        it 'links to past events' do
+          click_link 'View past events'
+
+          @past_events.each do |event|
+            page.should have_link(event.title)
+          end
+
+          page.should have_link('View upcoming events')
         end
 
       end

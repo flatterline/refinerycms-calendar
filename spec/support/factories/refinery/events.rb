@@ -8,6 +8,11 @@ FactoryGirl.define do
     factory :private_event do
       is_private true
     end
+
+    factory :past_event do
+      starts_at { Time.now - 1.week }
+      ends_at   { Time.now - 1.week + 2.hours }
+    end
   end
 end
 

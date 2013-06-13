@@ -1,7 +1,6 @@
 <%= div_for event do -%>
+  <h2><%= link_to event.title, refinery.calendar_event_path(event) %></h2>
   <time class="date" datetime="<%= event.starts_at %>">
     <%= event.starts_at.strftime('%b %d').html_safe %>
   </time>
-
-  <h1><%= link_to event.title, refinery.calendar_event_path(event) %></h1>
 <% end -%>
