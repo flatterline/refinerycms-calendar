@@ -2,8 +2,6 @@ module Refinery
   module Calendar
     module Admin
       class AttendeesController < ::Refinery::AdminController
-        load_and_authorize_resource :class => 'Refinery::Calendar::Attendee'
-
         before_filter :find_event
 
         crudify :'refinery/calendar/attendee',

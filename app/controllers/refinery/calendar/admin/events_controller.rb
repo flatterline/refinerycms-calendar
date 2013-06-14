@@ -2,7 +2,6 @@ module Refinery
   module Calendar
     module Admin
       class EventsController < ::Refinery::AdminController
-        load_and_authorize_resource :class => 'Refinery::Calendar::Event'
 
         crudify :'refinery/calendar/event',
                 xhr_paging: true,
