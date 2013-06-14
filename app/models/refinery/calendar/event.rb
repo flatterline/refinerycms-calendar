@@ -53,7 +53,7 @@ module Refinery
         end
 
         def upcoming
-          where('refinery_calendar_events.starts_at >= ?', Time.now)
+          where('refinery_calendar_events.starts_at >= ?', Time.now).order("refinery_calendar_events.starts_at ASC")
         end
 
         def archive
