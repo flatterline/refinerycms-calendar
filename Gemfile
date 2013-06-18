@@ -11,6 +11,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'acts-as-taggable-on'
 gem 'jquery-rails'
 
 group :test do

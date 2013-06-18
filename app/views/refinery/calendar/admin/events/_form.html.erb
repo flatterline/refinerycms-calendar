@@ -21,6 +21,17 @@
     <%= f.text_field :venue %>
   </div>
 
+  <% if Refinery::Calendar::Event.default_categories.present? -%>
+    <h3><%=t '.select_category' -%></h3>
+    <% Refinery::Calendar::Event.default_categories.each do |category| -%>
+      <div class='field'>
+        <label>
+          <%= f.check_box :category_list, { checked: f.object.category_list.include?(category.to_s), multiple: true }, category, nil -%>
+          <%=t ".category.#{category}" -%>
+      </div>
+    <% end -%>
+  <% end -%>
+
   <div class='field'>
     <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
       <ul id='page_parts'>

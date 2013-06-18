@@ -12,6 +12,22 @@ module Refinery
 
       describe "validations" do
 
+        describe 'category_list' do
+
+          Event.default_categories.each do |category|
+            it "'#{category}' is valid" do
+              @event.category_list = category
+              @event.should be_valid
+            end
+          end
+
+          it "'non-existent' is NOT valid" do
+            @event.category_list = 'non-existent'
+            @event.should_not be_valid
+          end
+
+        end
+
         describe 'ends_at' do
 
           it 'is required' do
