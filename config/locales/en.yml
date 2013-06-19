@@ -27,6 +27,12 @@ en:
         events:
           event:
             delete: Delete
+      category:
+        conference: Conference
+        workshop: Information Seminar / Workshop
+        networking: Networking Event
+        trade_mission: Trade Mission
+        trade_show: Trade Show / Exhibition
 
     calendar:
       admin:
@@ -53,12 +59,6 @@ en:
             edit: Edit this event
             delete: Remove this event forever
           form:
-            category:
-              conference: Conference
-              workshop: Information Seminar / Workshop
-              networking: Networking Event
-              trade_mission: Trade Mission
-              trade_show: Trade Show / Exhibition
             select_category: "Select any categories that apply to this event:"
           show:
             add_to_calendar: Add this event to your calendar.
@@ -90,7 +90,7 @@ en:
   activerecord:
     attributes:
       refinery/calendar/event:
-        title: Title
-        starts_at: From
-        ends_at: To
         description: Description
+        ends_at: To
+        starts_at: From
+        title: Title

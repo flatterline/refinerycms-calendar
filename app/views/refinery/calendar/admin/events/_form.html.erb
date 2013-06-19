@@ -27,7 +27,7 @@
       <div class='field'>
         <label>
           <%= f.check_box :category_list, { checked: f.object.category_list.include?(category.to_s), multiple: true }, category, nil -%>
-          <%=t ".category.#{category}" -%>
+          <%=t category, scope: 'refinery.events.category' -%>
       </div>
     <% end -%>
   <% end -%>
