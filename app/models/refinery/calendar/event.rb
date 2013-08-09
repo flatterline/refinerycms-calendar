@@ -10,7 +10,7 @@ module Refinery
       belongs_to :organizer, class_name: 'Refinery::User'
       has_many   :attendees
 
-      validates :title, presence: true, uniqueness: true
+      validates :title, presence: true
       validates :ends_at, :organizer_id, :starts_at, presence: true
       validate  :validates_start_before_end, :validates_categories
 
