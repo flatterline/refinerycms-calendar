@@ -14,10 +14,13 @@ module Refinery
       validates :ends_at, :organizer_id, :starts_at, presence: true
       validate  :validates_start_before_end, :validates_categories
 
-      attr_accessible :category_list, :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue, :is_private
+      attr_accessible :category_list, :description, :ends_at, :organizer, :organizer_id, :starts_at, :title, :venue, :is_private,
+                      :registration_link
 
       scope :is_private, where(is_private: true)
       scope :is_public,  where(is_private: false)
+
+      before_validation :strip_link_protocol
 
       class << self
         def archive
@@ -61,6 +64,10 @@ module Refinery
       end
 
     private
+
+      def strip_link_protocol
+        self.registration_link = self.registration_link.sub(/^https?\:\/\//, '') if self.registration_link.present?
+      end
 
       def validates_categories
         if self.category_list.present?
